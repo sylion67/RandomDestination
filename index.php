@@ -14,10 +14,10 @@
 	<main>
 		<div id="mapContainer">
 		</div>
-		<form method="POST" id="formDistance">
+		<div id="formDistance">
 			<input type="number" id="distance" name="distance">
-			<input type="button" id="submit" value="Search">	
-		</form>
+			<button id="submit">Search</button>
+		</div>
 	</main>
 	<script src="main.js"></script>
 </body>

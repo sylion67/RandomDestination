@@ -1,23 +1,20 @@
 'use strict';
 
-console.log('test');
-
 var mapObject = function(){
 	var self = this;
-	/*navigator.geolocation.getCurrentPosition(function(position){
-		console.log(position.coords.longitude);
-		self.lat = position.coords.latitude;
-		self.lng = position.coords.longitude;
-	});*/
 
 	self.myPosImage = {
-	    url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-	    // This marker is 20 pixels wide by 32 pixels high.
-	    size: new google.maps.Size(50, 52)
-	  };
+	    url: 'http://alomea.fr/wp-content/uploads/2016/12/localisation-icon.png',
+	    size: new google.maps.Size(71, 71),
+	  	origin: new google.maps.Point(0, 0),
+	  	anchor: new google.maps.Point(17, 34),
+	  	scaledSize: new google.maps.Size(45, 45)
+  	};
+
 	self.start = function(){
 		self.getPosition();
 	}
+
 	self.getPosition = function(){
 		navigator.geolocation.getCurrentPosition(function(position){
 			self.lat = position.coords.latitude;
@@ -27,8 +24,8 @@ var mapObject = function(){
 		});		
 	}
 
-
 	self.initMap = function(){
+
 		self.map = new google.maps.Map(document.getElementById('mapContainer'), {
 			// Nous plaçons le centre de la carte avec les coordonnées ci-dessus
 			center: new google.maps.LatLng(self.lat, self.lng), 
@@ -51,17 +48,30 @@ var mapObject = function(){
 				style: google.maps.NavigationControlStyle.DROPDOWN_MENU 
 			}
 		});
+
 		self.markerMyPos = new google.maps.Marker({
 			position: self.myPos,
 			icon: self.myPosImage,
 			map: self.map
 		})
 	}
+}
 
+var setDestination = function(){
+	var self = this;
+	self.distance = $('#distance').val();
 
+	self.initDestination = function(){
+		console.log(self.distance);
+	}
 }
 
 $(document).ready(function(){
 	var mapTest = new mapObject();
 	mapTest.start();
-})
+});
+
+$('#submit').click(function(){
+	var destination = new setDestination();
+	destination.initDestination();
+});

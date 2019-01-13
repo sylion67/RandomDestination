@@ -42,14 +42,14 @@ input[type="number"]{
 	font-size: 3vh;
 }
 
-input[type="button"]{
+button{
 	background-color: white;
 	font-size: 2vh;
 	border-radius: 5px;
 	border: 1px solid grey;
 }
 
-input[type="button"]:hover{
+button:hover{
 	background-color: #EAEAEA;
 
 }
